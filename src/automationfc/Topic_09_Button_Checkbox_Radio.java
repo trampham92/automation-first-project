@@ -15,7 +15,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_09_Button_Checkbox_Radio_Alert {
+public class Topic_09_Button_Checkbox_Radio {
   WebDriver driver;
   JavascriptExecutor js;
   String projectPath = System.getProperty("user.dir");
@@ -115,6 +115,37 @@ public class Topic_09_Button_Checkbox_Radio_Alert {
         Assert.assertFalse(checkbox.isSelected());
       }
     }
+  }
+
+  @Test
+  public void tc04CustomCheckboxOrRadioButton() {
+    driver.get("https://tiemchungcovid19.gov.vn/portal/register-person");
+    WebElement registerForRalativeRadioElement = driver
+        .findElement(By.xpath("//div[text()='Đăng ký cho người thân']/preceding-sibling::div/input"));
+    if (!registerForRalativeRadioElement.isSelected()) {
+      js.executeScript("arguments[0].click();", registerForRalativeRadioElement);
+    }
+    // Verify radio button is selected
+    Assert.assertTrue(registerForRalativeRadioElement.isSelected());
+  }
+
+  @Test
+  public void tc05CustomCheckboxOrRadioButton() {
+    driver.get("https://docs.google.com/forms/d/e/1FAIpQLSfiypnd69zhuDkjKgqvpID9kwO29UCzeCVrGGtbNPZXQok0jA/viewform");
+    common.sleepInSecond(2);
+    WebElement ariaCanThoRadio = driver.findElement(By.cssSelector("div[aria-label='Cần Thơ']"));
+
+    // Verify Can Tho radio button is not selected
+    Assert.assertTrue(
+        driver.findElement(By.cssSelector("div[aria-label='Cần Thơ'][aria-checked='false']")).isDisplayed());
+
+    // Click Can Tho radio button
+    js.executeScript("arguments[0].click();", ariaCanThoRadio);
+
+    // Verify Can Tho radio button is selected
+    Assert
+        .assertTrue(driver.findElement(By.cssSelector("div[aria-label='Cần Thơ'][aria-checked='true']")).isDisplayed());
+
   }
 
   public void checkToCheckbox(WebElement checkbox) {
