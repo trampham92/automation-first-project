@@ -39,7 +39,7 @@ public class Topic_10_User_Interaction {
     driver.manage().window().maximize();
   }
 
-//  @Test
+  @Test
   public void tc01HoverToElement() {
     driver.get("https://automationfc.github.io/jquery-tooltip/");
     actions.moveToElement(driver.findElement(By.cssSelector("input#age"))).perform();
@@ -48,7 +48,7 @@ public class Topic_10_User_Interaction {
         "We ask for your age only for statistical purposes.");
   }
 
-//  @Test
+  @Test
   public void tc04ClickAndHoverElement() {
     driver.get("https://automationfc.github.io/jquery-selectable/");
     List<String> arrayText = new ArrayList<String>();
@@ -69,7 +69,7 @@ public class Topic_10_User_Interaction {
     Assert.assertTrue(arraySelectedText.equals(arrayText));
   }
 
-//  @Test
+  @Test
   public void tc05ClickAndSelecRandomElement() {
     driver.get("https://automationfc.github.io/jquery-selectable/");
     List<String> randomItem = new ArrayList<String>(Arrays.asList("1", "3", "6", "11"));
@@ -98,7 +98,7 @@ public class Topic_10_User_Interaction {
     Assert.assertTrue(arraySelectedText.equals(arrayText));
   }
 
-//  @Test
+  @Test
   public void tc06DoubleClick() {
     driver.get("https://automationfc.github.io/basic-form/index.html");
     WebElement doubleClickButton = driver.findElement(By.xpath("//button[text()='Double click me']"));
@@ -108,7 +108,7 @@ public class Topic_10_User_Interaction {
     Assert.assertEquals(driver.findElement(By.id("demo")).getText(), "Hello Automation Guys!");
   }
 
-//  @Test
+  @Test
   public void tc07RightClick() {
     driver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
     actions.contextClick(driver.findElement(By.xpath("//span[text()='right click me']"))).perform();
